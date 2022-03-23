@@ -1,7 +1,5 @@
-import {enableAutoDestroy, mount, Wrapper} from '@vue/test-utils'
+import {mount, Wrapper} from '@vue/test-utils'
 import Header from '~/components/todo/Header.vue'
-
-enableAutoDestroy(afterEach)
 
 describe('Header', () => {
 

@@ -2,7 +2,7 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
-    '^vue$': 'vue/dist/vue.common.js'
+    '^vue$': 'vue/dist/vue.common.js',
   },
   moduleFileExtensions: [
     'ts',
@@ -12,8 +12,8 @@ module.exports = {
     'node'
   ],
   transform: {
-    '^.+\\.ts$': 'ts-jest',
-    '^.+\\.js$': 'babel-jest',
+    '^.+\\.(ts|tsx)$': 'ts-jest',
+    "^.+\\.(js|jsx)$": "babel-jest",
     '.*\\.(vue)$': 'vue-jest'
   },
   collectCoverage: true,
@@ -25,4 +25,7 @@ module.exports = {
   // testEnvironment: 'node',
   testTimeout: 20 * 1000,
   preset: 'ts-jest',
+  setupFilesAfterEnv: [
+    '<rootDir>/test/test.setup.ts'
+  ]
 }

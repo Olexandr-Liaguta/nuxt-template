@@ -1,28 +1,25 @@
-import {enableAutoDestroy, mount, Wrapper} from '@vue/test-utils'
+import {mount, Wrapper} from '@vue/test-utils'
 import Card from '~/components/Card.vue'
-import {someUtilSum} from "~/utils/someUtils";
-
-enableAutoDestroy(afterEach)
 
 describe('Card', () => {
 
-  let wrapper: Wrapper<any> | undefined;
+  let wrapper: Wrapper<any>;
 
   const createComponent = () => {
     wrapper = mount(Card)
   }
 
-  it('util', () => {
-    const a = 5
-    const b = 5
+  const MY_CARD = 'My card'
 
-    expect(someUtilSum(a, b)).toBe(a + b)
+  it(`component title has text ${MY_CARD}`, () => {
+    createComponent()
+    expect(wrapper.text()).toContain('My card')
   })
 
-  it('component', () => {
+  it('close button', async () => {
     createComponent()
-
-    expect(wrapper?.text()).toContain('My card')
+    const wrapperBtn = wrapper.findComponent({ name: 'v-btn'});
+    expect(wrapperBtn.exists()).toBeTruthy()
   })
 
 })
